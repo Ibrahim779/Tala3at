@@ -23,6 +23,13 @@
                         <span class="d-lg-none d-md-block">Search</span>
                     </button>
                 </li>
+                <li class="nav-item">
+                    @if(app()->getLocale()=='ar')
+                        <a class="nav-link" href="{{route('admin.lang', 'en')}}" role="button">en</a>
+                    @else
+                        <a class="nav-link" href="{{route('admin.lang', 'ar')}}" role="button">ar</a>
+                    @endif
+                </li>
                 <li class="dropdown nav-item">
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="notification d-none d-lg-block d-xl-block"></div>

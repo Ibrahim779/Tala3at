@@ -15,4 +15,10 @@ class Category extends Model
     {
         return $this->hasMany(Meeting::class);
     }
+
+    public function getNameAttribute()
+    {
+        //Todo:: use app getLocale
+        return $this->name_en;
+    }
 }

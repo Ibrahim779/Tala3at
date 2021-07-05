@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="{{session('dir')}}" lang="{{app()->getLocale()}}">
 
 <head>
 
@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="">
+<body class="{{session('dir')}}">
     <div class="wrapper">
 
         @include('admin.includes.sidebar')

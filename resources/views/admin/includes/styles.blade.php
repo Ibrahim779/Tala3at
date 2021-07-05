@@ -4,6 +4,9 @@
 <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
 <!-- CSS Files -->
 <link href="{{asset('assets/css/black-dashboard.css?v=1.0.0')}}" rel="stylesheet" />
+@if(app()->getLocale() == 'ar')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css" rel="stylesheet" />
+@endif
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
 @yield('style')

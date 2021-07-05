@@ -1,8 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GovernorateController;
 use App\Http\Controllers\Admin\MeetingController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Middleware\SetLocal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +25,14 @@ Route::get('/', [DashboardController::class, 'index'])->name('index');
 
 Route::resource('meetings', MeetingController::class);
 
+Route::resource('categories', CategoryController::class);
+
+Route::resource('governorates', GovernorateController::class);
+
+Route::resource('cities', CityController::class);
+
+Route::resource('users', UserController::class);
+
 Route::middleware('guest:admin')->group(function () {
 
     Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -31,3 +44,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 });
+
+Route::get('lang/{lang}', function ($lang){
+    session([
+        SetLocal::LANG_KEY => $lang
+    ]);
+    return back();
+})->name('lang');

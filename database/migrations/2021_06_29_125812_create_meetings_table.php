@@ -22,7 +22,7 @@ class CreateMeetingsTable extends Migration
             $table->string('img')->nullable();
             $table->date('date');
             $table->time('time');
-            $table->integer('attendance_count')->default(1);
+            $table->integer('attendance_count');
             $table->foreignId('category_id');
             $table->foreignId('governorate_id');
             $table->foreignId('city_id');

@@ -1,13 +1,13 @@
 @extends('layout.admin')
 
-@section('title', 'main')
+@section('title', 'Categories')
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                    <h4 class="card-title"> Simple Table</h4>
+                    <h4 class="card-title">Categories</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -18,19 +18,7 @@
                                     #
                                 </th>
                                 <th>
-                                    Title
-                                </th>
-                                <th class="text-center">
-                                    Image
-                                </th>
-                                <th class="text-center">
-                                    Attendances Count
-                                </th>
-                                <th class="text-center">
-                                    Date
-                                </th>
-                                <th class="text-center">
-                                    Time
+                                    Name
                                 </th>
                                 <th class="text-center">
                                     Control
@@ -38,31 +26,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($meetings as $meeting)
+                            @forelse($categories as $category)
                             <tr>
                                 <td>
                                     {{$loop->iteration}}
                                 </td>
                                 <td>
-                                    {{$meeting->title}}
+                                    {{$category->name}}
                                 </td>
                                 <td class="text-center">
-                                    <img class="table-img" src="{{$meeting->image}}" alt="meeting_img">
-                                </td>
-                                <td class="text-center">
-                                    {{$meeting->attendance_count}}
-                                </td>
-                                <td class="text-center">
-                                    {{$meeting->date}}
-                                </td>
-                                <td class="text-center">
-                                    {{$meeting->time}}
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{route('admin.meetings.edit', $meeting->id)}}">
+                                    <a href="{{route('admin.categories.edit', $category->id)}}">
                                         <button class="btn btn-default p-2"><i class="tim-icons icon-pencil"></i></button>
                                     </a>
-                                    <form method="post"  action="{{route('admin.meetings.destroy', $meeting->id)}}">
+                                    <form method="post"  action="{{route('admin.categories.destroy', $category->id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger p-2"><i class="tim-icons icon-trash-simple"></i></button>
@@ -75,8 +51,8 @@
                             </tbody>
                         </table>
                         <div class="">
-                            @for($i=1; $i<=$meetings->lastPage(); $i++)
-                                <a href="{{$meetings->url($i)}}" class="btn btn-icon btn-round pt-2 {{$i==$meetings->currentPage()?'btn-primary':''}}">{{$i}}</a>
+                            @for($i=1; $i<=$categories->lastPage(); $i++)
+                                <a href="{{$categories->url($i)}}" class="btn btn-icon btn-round pt-2 {{$i==$categories->currentPage()?'btn-primary':''}}">{{$i}}</a>
                             @endfor
                         </div>
                     </div>
@@ -84,7 +60,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <a href="{{route('admin.meetings.create')}}">
+            <a href="{{route('admin.categories.create')}}">
                 <button class="btn btn-primary"><i class="tim-icons icon-simple-add"></i></button>
             </a>
         </div>

@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 abstract class Repository implements RepositoryInterface
 {
@@ -34,7 +35,12 @@ abstract class Repository implements RepositoryInterface
 
     public function delete(Model $model)
     {
-       $this->model->delete();
+        if (isset($model->img)) {
+            if (Storage::disk('public')->exists($model->img)) {
+                Storage::disk('public')->delete($model->img);
+            }
+        }
+        $model->delete();
     }
 
     public abstract function saveData($model, $request);
