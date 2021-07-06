@@ -19,7 +19,7 @@ class CityController extends Controller
 
     public function index()
     {
-        $cities = $this->cityRepository->getWithPagination();
+        $cities = $this->cityRepository->paginate(self::PAGINATION);
 
         return view('admin.cities.index', compact('cities'));
     }
@@ -31,7 +31,7 @@ class CityController extends Controller
 
     public function store(CityRequest $request)
     {
-        $this->cityRepository->createOrUpdate(new City, $request);
+        $this->cityRepository->create($request->all());
 
         return redirect()->route('admin.cities.index');
     }
@@ -43,7 +43,7 @@ class CityController extends Controller
 
     public function update(City $city, CityRequest $request)
     {
-        $this->cityRepository->createOrUpdate($city, $request);
+        $this->cityRepository->update($city, $request->all());
 
         return redirect()->route('admin.cities.index');
     }

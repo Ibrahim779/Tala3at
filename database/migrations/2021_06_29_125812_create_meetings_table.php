@@ -26,6 +26,7 @@ class CreateMeetingsTable extends Migration
             $table->foreignId('category_id');
             $table->foreignId('governorate_id');
             $table->foreignId('city_id');
+            $table->unsignedInteger('created_by');
             $table->timestamps();
         });
     }

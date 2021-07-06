@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryRepository->getWithPagination();
+        $categories = $this->categoryRepository->paginate(self::PAGINATION);
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $this->categoryRepository->createOrUpdate(new Category, $request);
+        $this->categoryRepository->create($request->all());
 
         return redirect()->route('admin.categories.index');
     }
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
     public function update(Category $category, CategoryRequest $request)
     {
-        $this->categoryRepository->createOrUpdate($category, $request);
+        $this->categoryRepository->update($category, $request->all());
 
         return redirect()->route('admin.categories.index');
     }

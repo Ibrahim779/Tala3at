@@ -31,24 +31,4 @@ class UserRepository extends Repository implements UserRepositoryInterface
         ];
     }
 
-    public function saveData($user, $request)
-    {
-        $user->name             = $request->name;
-        $user->phone            = $request->phone;
-        $user->email            = $request->email;
-        $user->gender           = $request->gender;
-        $user->date_of_birth    = $request->date_of_birth;
-        $user->governorate_id   = $request->governorate_id;
-        $user->city_id          = $request->city_id;
-        if ($request->avatar) {
-            if ($user->avatar){
-                Storage::disk('public')->delete($user->avatar);
-                $user->avatar = $request->avatar->store('users', 'public');
-            } else {
-                $user->avatar = $request->avatar->store('users', 'public');
-            }
-        }
-        $user->save();
-    }
-
 }

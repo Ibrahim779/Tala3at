@@ -9,6 +9,14 @@ class Meeting extends Model
 {
     use HasFactory;
 
+    const ATTENDANCE_INDETERMINATE = 0;
+
+    const ATTENDAnCES_FROM_1_TO_20 = 1;
+
+    const ATTENDAnCES_FROM_20_TO_40 = 2;
+
+    const ATTENDAnCES_FROM_40_TO_60 = 3;
+
     protected $guarded = [];
 
     public function category()
@@ -31,20 +39,35 @@ class Meeting extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function scopeUserMeetings($query, $userId)
+    {
+        return $query->whereHas('users', function ($q) use ($userId) {
+            $q->whereUserId($userId);
+        });
+    }
+
     public function getTitleAttribute()
     {
-        //Todo:: use app getLocale
-        return $this->title_en;
+        return $this->{'title_'.app()->getLocale()};
     }
 
     public function getDescriptionAttribute()
     {
-        //Todo:: use app getLocale
-        return $this->description_en;
+        return $this->{'description_'.app()->getLocale()};
     }
 
     public function getImageAttribute()
     {
         return $this->img;
+    }
+
+    public static function getAttendancesCountArray()
+    {
+        return [
+            'indeterminate' => self::ATTENDANCE_INDETERMINATE, //todo:: translate the key
+            '1-20'          => self::ATTENDAnCES_FROM_1_TO_20,
+            '20-40'         => self::ATTENDAnCES_FROM_20_TO_40,
+            '40-60'         => self::ATTENDAnCES_FROM_40_TO_60,
+        ];
     }
 }

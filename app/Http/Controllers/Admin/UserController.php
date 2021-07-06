@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->userRepository->getWithPagination();
+        $users = $this->userRepository->paginate(self::PAGINATION);
 
         return view('admin.users.index', compact('users'));
     }
@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $this->userRepository->createOrUpdate(new User, $request);
+        $this->userRepository->create($request->all());
 
         return redirect()->route('admin.users.index');
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
 
     public function update(User $user, UserRequest $request)
     {
-        $this->userRepository->createOrUpdate($user, $request);
+        $this->userRepository->update($user, $request->all());
 
         return redirect()->route('admin.users.index');
     }

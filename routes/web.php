@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GovernorateController;
 use App\Http\Controllers\Admin\MeetingController;
+use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\SetLocal;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +34,11 @@ Route::resource('cities', CityController::class);
 
 Route::resource('users', UserController::class);
 
+Route::resource('slides', SlideController::class);
+
 Route::middleware('guest:admin')->group(function () {
+
+    Route::view('login', 'admin.auth.login')->name('loginForm');
 
     Route::post('login', [AuthController::class, 'login'])->name('login');
 

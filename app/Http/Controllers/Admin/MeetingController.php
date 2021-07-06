@@ -19,7 +19,7 @@ class MeetingController extends Controller
 
     public function index()
     {
-        $meetings = $this->meetingRepository->getWithPagination();
+        $meetings = $this->meetingRepository->paginate(self::PAGINATION);
 
         return view('admin.meetings.index', compact('meetings'));
     }
@@ -40,7 +40,7 @@ class MeetingController extends Controller
 
     public function store(MeetingRequest $request)
     {
-        $this->meetingRepository->createOrUpdate(new Meeting, $request);
+        $this->meetingRepository->create($request);
 
         return redirect()->route('admin.meetings.index');
     }
@@ -61,7 +61,7 @@ class MeetingController extends Controller
 
     public function update(Meeting $meeting, MeetingRequest $request)
     {
-        $this->meetingRepository->createOrUpdate($meeting, $request);
+        $this->meetingRepository->update($meeting, $request);
 
         return redirect()->route('admin.meetings.index');
     }

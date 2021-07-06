@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         $user = new User;
 
-        $this->createOrUpdate($user, $request);
+        User::create($user, $request);
 
         auth()->login($user);
 
@@ -50,25 +50,6 @@ class AuthController extends Controller
     private function createToken()
     {
         return auth()->user()->createToken('token')->plainTextToken;
-    }
-
-    private function createOrUpdate($user, $request)
-    {
-        $user->name           = $request->name;
-        $user->email          = $request->email;
-        $user->password       = $request->password;
-        $user->phone          = $request->phone;
-        $user->gender         = $request->gender;
-        $user->date_of_birth  = $request->date_of_birth;
-        if ($request->avatar) {
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
-                $user->avatar = $request->avatar->store('users', 'public');
-            } else {
-                $user->avatar = $request->avatar->store('users', 'public');
-            }
-        }
-        $user->save();
     }
 
 }

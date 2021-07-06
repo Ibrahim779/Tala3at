@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Services\FileUpload\FileUploadService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -43,6 +45,12 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         return $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function setAvatarAttribute(UploadedFile $avatar)
+    {
+        return $this->attributes['avatar'] = (new FileUploadService)
+            ->handel($avatar, 'users', $this->attributes['avatar'])->getFileName();
     }
 
     public function governorate()

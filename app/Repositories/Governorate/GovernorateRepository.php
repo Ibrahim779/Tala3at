@@ -16,11 +16,4 @@ class GovernorateRepository extends Repository implements GovernorateRepositoryI
         parent::__construct($governorate);
     }
 
-    public function saveData($governorate, $request)
-    {
-        $governorate->name_ar  = $request->name_ar;
-        $governorate->name_en  = $request->name_en;
-        $governorate->save();
-    }
-
 }

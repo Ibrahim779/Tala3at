@@ -16,11 +16,4 @@ class CityRepository extends Repository implements CityRepositoryInterface
         parent::__construct($city);
     }
 
-    public function saveData($city, $request)
-    {
-        $city->name_ar  = $request->name_ar;
-        $city->name_en  = $request->name_en;
-        $city->save();
-    }
-
 }

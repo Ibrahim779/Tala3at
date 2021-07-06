@@ -11,6 +11,11 @@ class Governorate extends Model
 
     protected $guarded = [];
 
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
+
     public function getNameAttribute()
     {
         //Todo:: use app getLocale

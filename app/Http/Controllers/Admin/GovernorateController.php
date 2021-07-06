@@ -19,7 +19,7 @@ class GovernorateController extends Controller
 
     public function index()
     {
-        $governorates = $this->governorateRepository->getWithPagination();
+        $governorates = $this->governorateRepository->paginate(self::PAGINATION);
 
         return view('admin.governorates.index', compact('governorates'));
     }

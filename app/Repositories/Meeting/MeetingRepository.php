@@ -10,6 +10,7 @@ use App\Models\Governorate;
 use App\Models\Meeting;
 use App\Models\User;
 use App\Repositories\Repository;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class MeetingRepository extends Repository implements MeetingRepositoryInterface
@@ -31,36 +32,40 @@ class MeetingRepository extends Repository implements MeetingRepositoryInterface
 
         $cities = City::select('id', 'name_ar', 'name_en')->get();
 
+        $attendancesCountArray = Meeting::getAttendancesCountArray();
+
         return [
             'categories' => $categories,
             'users' => $users,
             'governorates' => $governorates,
             'cities' => $cities,
+            'attendancesCountArray' => $attendancesCountArray
         ];
     }
 
-    public function saveData($meeting, $request)
+    public function create($request)
     {
-        $meeting->title_ar          = $request->title_ar;
-        $meeting->title_en          = $request->title_en;
-        $meeting->date              = $request->date;
-        $meeting->time              = $request->time;
-        $meeting->description_ar    = $request->description_ar;
-        $meeting->description_en    = $request->description_en;
-        $meeting->attendance_count  = $request->attendance_count;
-        $meeting->category_id       = $request->category_id;
-        $meeting->governorate_id    = $request->governorate_id;
-        $meeting->city_id           = $request->city_id;
-        if ($request->img) {
-            if ($meeting->img){
-                Storage::disk('public')->delete($meeting->img);
-                $meeting->img = $request->img->store('meetings', 'public');
-            } else {
-                $meeting->img = $request->img->store('meetings', 'public');
-            }
-        }
-        $meeting->save();
+        $meeting = parent::create($request->merge(['created_by' => auth()->id()])->except('users'));
+
         $meeting->users()->attach($request->users);
+
+        return $meeting;
+    }
+
+    public function update(Model $meeting, $request)
+    {
+        parent::update($meeting, $request->except('users'));
+
+        $meeting->users()->detach();
+
+        $meeting->users()->attach($request->users);
+
+        return $meeting;
+    }
+
+    public function joinUser(Model $meeting, $userId)
+    {
+        $meeting->users()->attach($userId);
     }
 
 }

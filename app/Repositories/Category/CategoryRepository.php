@@ -16,11 +16,4 @@ class CategoryRepository extends Repository implements CategoryRepositoryInterfa
         parent::__construct($category);
     }
 
-    public function saveData($category, $request)
-    {
-        $category->name_ar  = $request->name_ar;
-        $category->name_en  = $request->name_en;
-        $category->save();
-    }
-
 }

@@ -15,12 +15,14 @@ class AuthController extends Controller
         if (!Auth::guard('admin')->attempt($request->only(['email', 'password']))) {
             return back()->withErrors('email or password is not correct');
         }
-        //todo: redirect to dashboard
+
+        return redirect()->route('admin.index');
     }
 
     public function logout()
     {
         Auth::guard('admin')->logout();
-        //todo: redirect to login form
+
+        return redirect()->route('admin.loginForm');
     }
 }
