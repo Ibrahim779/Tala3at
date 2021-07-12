@@ -13,7 +13,6 @@ class City extends Model
 
     public function getNameAttribute()
     {
-        //Todo:: use app getLocale
-        return $this->name_en;
+        return $this->{'name_'.app()->getLocale()};
     }
 }

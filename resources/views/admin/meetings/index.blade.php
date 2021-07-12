@@ -1,17 +1,20 @@
 @extends('layout.admin')
 
-@section('title', 'main')
+@section('title', 'Meetings')
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
-                <div class="card-header">
-                    <h4 class="card-title"> Simple Table</h4>
+                <div class="card-header row">
+                    <h4 class="card-title col-10">Meetings</h4>
+                    <a class="col-2" href="{{route('admin.meetings.create')}}">
+                        <button class="btn btn-primary">Add</button>
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter" id="">
                             <thead class=" text-primary">
                             <tr>
                                 <th>
@@ -32,7 +35,7 @@
                                 <th class="text-center">
                                     Time
                                 </th>
-                                <th class="text-center">
+                                <th>
                                     Control
                                 </th>
                             </tr>
@@ -58,11 +61,11 @@
                                 <td class="text-center">
                                     {{$meeting->time}}
                                 </td>
-                                <td class="text-center">
-                                    <a href="{{route('admin.meetings.edit', $meeting->id)}}">
+                                <td class="row">
+                                    <a class="col-3" href="{{route('admin.meetings.edit', $meeting->id)}}">
                                         <button class="btn btn-default p-2"><i class="tim-icons icon-pencil"></i></button>
                                     </a>
-                                    <form method="post"  action="{{route('admin.meetings.destroy', $meeting->id)}}">
+                                    <form class="col-2" method="post"  action="{{route('admin.meetings.destroy', $meeting->id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger p-2"><i class="tim-icons icon-trash-simple"></i></button>
@@ -82,11 +85,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <a href="{{route('admin.meetings.create')}}">
-                <button class="btn btn-primary"><i class="tim-icons icon-simple-add"></i></button>
-            </a>
         </div>
     </div>
 

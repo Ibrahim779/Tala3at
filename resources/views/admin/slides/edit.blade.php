@@ -27,7 +27,7 @@
                             <div class="col-md-4 pr-md-1">
                                 <div class="form-group">
                                     <label for="titleAr">Title ar</label>
-                                    <input value="{{$slide->title_ar?:old('title_ar')}}" name="name_ar"
+                                    <input value="{{$slide->title_ar?:old('title_ar')}}" name="title_ar"
                                            id="titleAr" type="text" class="form-control"
                                            placeholder="Name Ar">
                                 </div>
@@ -35,7 +35,7 @@
                             <div class="col-md-4 pl-md-1">
                                 <div class="form-group">
                                     <label for="titleEn">Title en</label>
-                                    <input value="{{$slide->title_en?:old('title_en')}}" name="name_en"
+                                    <input value="{{$slide->title_en?:old('title_en')}}" name="title_en"
                                            id="titleEn" type="text" class="form-control"
                                            placeholder="Name En">
                                 </div>
@@ -49,14 +49,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descriptionAr">Text ar</label>
-                                    <textarea name="description_ar" id="descriptionAr" rows="4" cols="80" class="form-control"
+                                    <textarea name="text_ar" id="descriptionAr" rows="4" cols="80" class="form-control"
                                               placeholder="Here can be your description Ar">{{$slide->text_ar?:old('text_ar')}}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descriptionEn">Text en</label>
-                                    <textarea name="description_en" id="descriptionEn" rows="4" cols="80" class="form-control"
+                                    <textarea name="text_en" id="descriptionEn" rows="4" cols="80" class="form-control"
                                               placeholder="Here can be your description En">{{$slide->text_en?:old('text_en')}}</textarea>
                                 </div>
                             </div>

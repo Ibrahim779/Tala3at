@@ -33,6 +33,8 @@ class MeetingController extends Controller
     {
         $meeting = $this->meetingRepository->create($request);
 
+        $this->meetingRepository->sendNewMeetingNotification($meeting);
+
         return new MeetingResource($meeting);
     }
 

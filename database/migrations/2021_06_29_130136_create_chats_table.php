@@ -17,7 +17,7 @@ class CreateChatsTable extends Migration
             $table->id();
             $table->string('title_ar');
             $table->string('title_en');
-            $table->string('image')->nullable();
+            $table->string('img')->nullable();
             $table->foreignId('meeting_id');
             $table->timestamps();
         });

@@ -19,17 +19,19 @@ class SetLocal
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session(self::LANG_KEY)) {
-            App::setLocale(session(self::LANG_KEY));
-            if (session(self::LANG_KEY) == 'ar')
-                session(['dir' => 'rtl']);
-            else
-                session(['dir' => 'ltr']);
-        }else {
-            if (App::getLocale() == 'ar')
-                session(['dir' => 'rtl']);
-            else
-                session(['dir' => 'ltr']);
+        if (!$request->wantsJson()) {
+            if (session(self::LANG_KEY)) {
+                App::setLocale(session(self::LANG_KEY));
+                if (session(self::LANG_KEY) == 'ar')
+                    session(['dir' => 'rtl']);
+                else
+                    session(['dir' => 'ltr']);
+            } else {
+                if (App::getLocale() == 'ar')
+                    session(['dir' => 'rtl']);
+                else
+                    session(['dir' => 'ltr']);
+            }
         }
         return $next($request);
     }

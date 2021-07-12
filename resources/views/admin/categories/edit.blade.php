@@ -27,7 +27,7 @@
                             <div class="col-md-6 pr-md-1">
                                 <div class="form-group">
                                     <label for="titleAr">Name ar</label>
-                                    <input value="{{$category->title_ar?:old('name_ar')}}" name="name_ar"
+                                    <input value="{{$category->name_ar?:old('name_ar')}}" name="name_ar"
                                            id="titleAr" type="text" class="form-control"
                                            placeholder="Name Ar">
                                 </div>
@@ -35,7 +35,7 @@
                             <div class="col-md-6 pl-md-1">
                                 <div class="form-group">
                                     <label for="titleEn">Name en</label>
-                                    <input value="{{$category->title_en?:old('name_en')}}" name="name_en"
+                                    <input value="{{$category->name_en?:old('name_en')}}" name="name_en"
                                            id="titleEn" type="text" class="form-control"
                                            placeholder="Name En">
                                 </div>

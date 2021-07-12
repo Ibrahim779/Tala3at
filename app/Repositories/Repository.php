@@ -4,7 +4,7 @@
 namespace App\Repositories;
 
 
-use App\Services\FileUpload\FileUploadService;
+use App\Services\FileStore\FileStoreService;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class Repository implements RepositoryInterface
@@ -25,7 +25,7 @@ abstract class Repository implements RepositoryInterface
     public function delete(Model $model)
     {
         if (isset($model->img)) {
-            (new FileUploadService)->delete($model->img);
+            (new FileStoreService)->delete($model->img);
         }
         $model->delete();
     }

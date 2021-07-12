@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\FileUpload\FileUploadService;
+use App\Services\FileStore\FileStoreService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -49,8 +49,13 @@ class User extends Authenticatable
 
     public function setAvatarAttribute(UploadedFile $avatar)
     {
-        return $this->attributes['avatar'] = (new FileUploadService)
-            ->handel($avatar, 'users', $this->attributes['avatar'])->getFileName();
+        return $this->attributes['avatar'] = (new FileStoreService)
+            ->handel($avatar, 'users', $this->avatar)->getFileName();
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->avatar?url('storage/'.$this->avatar):'https://via.placeholder.com/150';
     }
 
     public function governorate()
@@ -71,5 +76,10 @@ class User extends Authenticatable
     public function meetings()
     {
         return $this->belongsToMany(Meeting::class);
+    }
+
+    public function devices()
+    {
+        return $this->hasMany(Device::class);
     }
 }

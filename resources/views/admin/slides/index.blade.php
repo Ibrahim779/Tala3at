@@ -6,8 +6,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
-                <div class="card-header">
-                    <h4 class="card-title">Slides</h4>
+                <div class="card-header row">
+                    <h4 class="card-title col-10">Slides</h4>
+                    <a class="col-2" href="{{route('admin.slides.create')}}">
+                        <button class="btn btn-primary">Add</button>
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -26,7 +29,7 @@
                                 <th>
                                     Text
                                 </th>
-                                <th class="text-center">
+                                <th>
                                     Control
                                 </th>
                             </tr>
@@ -40,11 +43,17 @@
                                 <td>
                                     {{$slide->title}}
                                 </td>
-                                <td class="text-center">
-                                    <a href="{{route('admin.slides.edit', $slide->id)}}">
+                                <td>
+                                    <img class="table-img" src="{{$slide->image}}" alt="slideImage">
+                                </td>
+                                <td>
+                                    {{$slide->text}}
+                                </td>
+                                <td class="row">
+                                    <a class="col-2" href="{{route('admin.slides.edit', $slide->id)}}">
                                         <button class="btn btn-default p-2"><i class="tim-icons icon-pencil"></i></button>
                                     </a>
-                                    <form method="post"  action="{{route('admin.slides.destroy', $slide->id)}}">
+                                    <form class="col-2" method="post"  action="{{route('admin.slides.destroy', $slide->id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger p-2"><i class="tim-icons icon-trash-simple"></i></button>
@@ -56,7 +65,7 @@
                             @endforelse
                             </tbody>
                         </table>
-                        <div class="">
+                        <div>
                             @for($i=1; $i<=$slides->lastPage(); $i++)
                                 <a href="{{$slides->url($i)}}" class="btn btn-icon btn-round pt-2 {{$i==$slides->currentPage()?'btn-primary':''}}">{{$i}}</a>
                             @endfor
@@ -64,11 +73,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <a href="{{route('admin.slides.create')}}">
-                <button class="btn btn-primary"><i class="tim-icons icon-simple-add"></i></button>
-            </a>
         </div>
     </div>
 

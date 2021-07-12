@@ -12,7 +12,7 @@
                     <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i>
                     </a>
                     <span class="login100-form-title p-b-49">
-						{{__('site.login')}}
+						{{__('admin.login')}}
 					</span>
                     @if ($errors->any())
                         <div class="alert alert-danger">

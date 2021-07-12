@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\FileStore\FileStoreService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -56,9 +57,15 @@ class Meeting extends Model
         return $this->{'description_'.app()->getLocale()};
     }
 
+    public function setImgAttribute($img)
+    {
+        return $this->attributes['img'] = (new FileStoreService)
+            ->handel($img, 'meetings', $this->img)->getFileName();
+    }
+
     public function getImageAttribute()
     {
-        return $this->img;
+        return $this->img?url('storage/'.$this->img):'https://via.placeholder.com/150';
     }
 
     public static function getAttendancesCountArray()

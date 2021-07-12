@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Services\FileUpload;
+namespace App\Services\FileStore;
 
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class FileUploadService
+class FileStoreService
 {
 
     /**

@@ -43,6 +43,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('categories/{category}/meetings', [CategoryMeetingController::class, 'index'])
         ->name('categories.meeting.index');
 
+    Route::get('meetings/{meeting}/users/{user}/join-user', [MeetingUserController::class, 'joinUser'])
+        ->name('meetings.users.joinUser');
+
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 });
