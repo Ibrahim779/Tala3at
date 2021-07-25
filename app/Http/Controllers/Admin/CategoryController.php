@@ -33,7 +33,7 @@ class CategoryController extends Controller
     {
         $this->categoryRepository->create($request->all());
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.categories.index')->withToastSuccess('Added successfully');
     }
 
     public function edit(Category $category)
@@ -45,14 +45,14 @@ class CategoryController extends Controller
     {
         $this->categoryRepository->update($category, $request->all());
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.categories.index')->withToastSuccess('Updated successfully');
     }
 
     public function destroy(Category $category)
     {
         $this->categoryRepository->delete($category);
 
-        return back();
+        return back()->withToastSuccess('Updated successfully');
     }
 
 

@@ -22,6 +22,16 @@ return [
 
     'chats' => 'Chats',
 
+    'chatsVue' => 'chats_Vue',
+
+    'chatsLivewire' => 'chats_Livewire',
+
+    'indeterminate' => 'indeterminate',
+
+    'email' => 'Email',
+
+    'password' => 'Password',
+
     'login' => 'login',
 
     'register' => 'register',

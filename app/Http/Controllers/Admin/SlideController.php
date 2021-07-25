@@ -36,7 +36,7 @@ class SlideController extends Controller
     {
         $this->slideRepository->create($request->all());
 
-        return redirect()->route('admin.slides.index');
+        return redirect()->route('admin.slides.index')->withToastSuccess('Added successfully');
     }
 
     public function edit(Slide $slide)
@@ -48,14 +48,14 @@ class SlideController extends Controller
     {
         $this->slideRepository->update($slide, $request->all());
 
-        return redirect()->route('admin.slides.index');
+        return redirect()->route('admin.slides.index')->withToastSuccess('Updated successfully');
     }
 
     public function destroy(Slide $slide)
     {
         $this->slideRepository->delete($slide);
 
-        return back();
+        return back()->withToastSuccess('Updated successfully');
     }
 
 

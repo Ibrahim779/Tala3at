@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\Models\Admin;
+use App\Models\AdminMessage;
 use App\Models\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -17,12 +19,13 @@ class AdminSentMessage implements ShouldBroadcast
 
     public $message;
 
+
     /**
      * Create a new event instance.
      *
-     * @param Message $message
+     * @param AdminMessage $message
      */
-    public function __construct(Message $message)
+    public function __construct(AdminMessage $message)
     {
         $this->message = $message;
     }
@@ -34,6 +37,6 @@ class AdminSentMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('admin.chats.'.$this->message->chat_id);
+        return new PrivateChannel('admin.chats.'.$this->message->admin_chat_id);
     }
 }

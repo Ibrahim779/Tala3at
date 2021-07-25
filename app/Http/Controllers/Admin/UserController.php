@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $this->userRepository->create($request->all());
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->withToastSuccess('Added successfully');
     }
 
     public function edit(User $user)
@@ -55,14 +55,14 @@ class UserController extends Controller
     {
         $this->userRepository->update($user, $request->all());
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->withToastSuccess('Updated successfully');
     }
 
     public function destroy(User $user)
     {
         $this->userRepository->delete($user);
 
-        return back();
+        return back()->withToastSuccess('Updated successfully');
     }
 
 

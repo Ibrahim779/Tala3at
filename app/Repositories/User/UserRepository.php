@@ -21,9 +21,9 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
     public function getData()
     {
-        $governorates = Governorate::select('id', 'name_ar', 'name_en')->get();
+        $governorates = Governorate::select('id', 'governorate_name_ar', 'governorate_name_en')->get();
 
-        $cities = City::select('id', 'name_ar', 'name_en')->get();
+        $cities = City::select('id', 'city_name_ar', 'city_name_en')->get();
 
         return [
             'governorates' => $governorates,

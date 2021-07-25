@@ -91,9 +91,6 @@
                                     <select name="city_id" class="form-control myForm-select"
                                             id="city-select">
                                         <option selected>Open this select menu</option>
-                                        @foreach($cities as $city)
-                                            <option value="{{$city->id}}">{{$city->name}}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -103,9 +100,9 @@
                                     <select name="attendance_count" class="form-control myForm-select"
                                             id="attendance-select">
                                         <option selected>select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @foreach(\App\Models\Meeting::getAttendancesCountArray() as $key => $value)
+                                            <option value="{{$value}}">{{$key}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -150,3 +147,4 @@
         </div>
     </div>
 @endsection
+@include('admin.meetings.parts.script')

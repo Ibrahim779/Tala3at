@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'gender' => 'male',
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => 12345678, // password
+            'password' => 'password', // password
             'governorate_id' => 1,
             'city_id' => 1,
             'remember_token' => Str::random(10),

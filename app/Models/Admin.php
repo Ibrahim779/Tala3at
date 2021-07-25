@@ -16,6 +16,16 @@ class Admin extends Authenticatable
     protected $guarded = [];
 
 
+    public function messages()
+    {
+        return $this->hasMany(AdminMessage::class);
+    }
+
+    public function chat()
+    {
+        return $this->hasMany(AdminChat::class);
+    }
+
     public function setPasswordAttribute($password)
     {
         return $this->attributes['password'] = Hash::make($password);
@@ -31,4 +41,5 @@ class Admin extends Authenticatable
     {
         return $this->img ? url('storage/'.$this->img) : 'https://via.placeholder.com/150';
     }
+
 }

@@ -14,10 +14,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            GovernorateSeeder::class,
+            CitySeeder::class,
             UserSeeder::class,
             AdminSeeder::class,
             MeetingSeeder::class,
-            PermissionsSeeder::class
+            PermissionsSeeder::class,
+            AdminMessageSeeder::class,
+            SlideSeeder::class,
+
         ]);
     }
 }

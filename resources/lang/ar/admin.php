@@ -22,6 +22,16 @@ return [
 
     'chats' => 'الدردشة',
 
+    'chatsVue' => 'الدردشة فيو',
+
+    'chatsLivewire' => 'الدردشة لايف واير',
+
+    'email' => 'البريد الالكتروني',
+
+    'password' => 'الرقم السر',
+
+    'indeterminate' => 'غير محدد',
+
     'login' => 'دخول',
 
     'register' => 'تسجيل الدخول',

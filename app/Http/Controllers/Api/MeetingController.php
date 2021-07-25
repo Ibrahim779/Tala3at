@@ -26,7 +26,7 @@ class MeetingController extends Controller
 
     public function index()
     {
-        return MeetingResource::collection($this->meetingRepository->all());
+        return MeetingResource::collection($this->meetingRepository->get());
     }
 
     public function store(MeetingRequest $request)

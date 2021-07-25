@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\ChatVueController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GovernorateCityController;
 use App\Http\Controllers\Admin\GovernorateController;
 use App\Http\Controllers\Admin\MeetingController;
 use App\Http\Controllers\Admin\RoleController;
@@ -41,9 +43,7 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::resource('categories', CategoryController::class);
 
-    Route::resource('governorates', GovernorateController::class);
-
-    Route::resource('cities', CityController::class);
+    Route::get('governorates/{governorate}/cities', [GovernorateCityController::class, 'index']);
 
     Route::resource('users', UserController::class);
 
@@ -54,6 +54,14 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('profile', [AdminController::class, 'profile'])->name('profile');
 
     Route::get('chats', [ChatController::class, 'index'])->name('chats.index');
+
+    Route::get('chats/vue', [ChatVueController::class, 'index'])->name('chatsVue.index');
+
+    Route::get('chats/fetch', [ChatVueController::class, 'fetch'])->name('chatsVue.fetch');
+
+    Route::get('chats/{chatId}/messages', [ChatVueController::class, 'getMessages'])->name('chatsVue.getMessages');
+
+    Route::post('chats/sendMessage', [ChatVueController::class, 'sendMessage'])->name('chatsVue.sendMessage');
 
     Route::resource('roles', RoleController::class);
 

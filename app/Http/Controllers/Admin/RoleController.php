@@ -26,7 +26,8 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $this->saveData(new Role, $request);
-        return redirect()->route('admin.roles.index');
+
+        return redirect()->route('admin.roles.index')->withToastSuccess('Added successfully');
     }
 
     public function edit(Role $role)
@@ -39,13 +40,13 @@ class RoleController extends Controller
     public function update(Role $role, RoleRequest $request)
     {
         $this->saveData($role, $request);
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.roles.index')->withToastSuccess('Updated successfully');
     }
 
     public function destroy(Role $role)
     {
         $role->delete();
-        return back();
+        return back()->withToastSuccess('Updated successfully');
     }
 
     private function saveData(Role $role, RoleRequest $request)

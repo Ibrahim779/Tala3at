@@ -18,6 +18,6 @@ class Governorate extends Model
 
     public function getNameAttribute()
     {
-        return $this->{'name_'.app()->getLocale()};
+        return $this->{'governorate_name_'.app()->getLocale()};
     }
 }

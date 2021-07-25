@@ -82,4 +82,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Device::class);
     }
+
+    public function scopeWhereUserInMeeting($query, $meetingId)
+    {
+        return $query->whereHas('meetings', function ($q) use ($meetingId) {
+            $q->whereMeetingId($meetingId);
+        });
+    }
 }

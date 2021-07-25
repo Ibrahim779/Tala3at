@@ -33,8 +33,8 @@ class MeetingFactory extends Factory
             'date' => $this->faker->date(),
             'time' => $this->faker->time(),
             'category_id' => Category::factory(),
-            'governorate_id' => Governorate::factory(),
-            'city_id' => City::factory(),
+            'governorate_id' => 1,
+            'city_id' => 1,
             'created_by' => User::factory(),
 
         ];

@@ -7,6 +7,8 @@
 
     @include('admin.includes.styles')
 
+    @livewireStyles
+
 </head>
 
 <body class="{{session('dir')}}">
@@ -29,8 +31,10 @@
         </div>
     </div>
 
-    @include('admin.includes.settings')
-
     @include('admin.includes.scripts')
+
+    @include('sweetalert::alert')
+
+    @livewireScripts
 </body>
 </html>

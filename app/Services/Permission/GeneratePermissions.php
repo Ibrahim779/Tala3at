@@ -36,10 +36,12 @@ class GeneratePermissions
                 $models[] = substr($filename,0,-4);
             }
         }
+
         $models = array_map(function ($model){
            $arr = explode('Models/',$model);
            return strtolower(end($arr));
         }, $models);
+        $models = array_diff($models, ['adminmessage']);
         $arr = ['role'];
         $models = array_merge($models, $arr);
         return $models;

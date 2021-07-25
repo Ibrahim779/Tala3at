@@ -90,9 +90,6 @@
                                     <select name="city_id" class="form-control myForm-select"
                                             id="city-select">
                                         <option selected>Open this select menu</option>
-                                        @foreach($cities as $city)
-                                            <option {{$meeting->city_id == $city->id ? 'selected' : ''}} value="{{$city->id}}">{{$city->name}}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -150,3 +147,4 @@
         </div>
     </div>
 @endsection
+@include('admin.meetings.parts.script')

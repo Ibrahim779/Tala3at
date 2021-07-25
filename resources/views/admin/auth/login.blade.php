@@ -1,6 +1,6 @@
 @extends('admin.auth.layout.login-layout')
 
-@section('title',__('site.login'))
+@section('title', __('admin.login'))
 
 @section('content')
     <div class="limiter">

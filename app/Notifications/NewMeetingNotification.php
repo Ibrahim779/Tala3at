@@ -13,6 +13,8 @@ class NewMeetingNotification extends Notification
 
     private $meeting;
 
+    private $devicesTokens = [];
+
     /**
      * Create a new notification instance.
      *
@@ -31,25 +33,33 @@ class NewMeetingNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['firebase', 'toDatabase'];
+        return ['firebase', 'database'];
     }
 
     public function toFirebase($notifiable)
     {
-        $devicesToken = $this->meeting->users()->devices()->get()->pluck('token');
+        $this->setTokens();
 
         return (new FirebaseMessage())
             ->withTitle($this->meeting->getTitleAttribute())
             ->withBody($this->meeting->getDescriptionAttribute())
-            ->asNotification($devicesToken); // OR ->asMessage($deviceTokens);
+            ->asNotification($this->devicesTokens); // OR ->asMessage($deviceTokens);
     }
 
     public function toDatabase($notifiable)
     {
         return [
-            'title' => $this->meeting->getTitleAttribute(),
-            'body'  => $this->meeting->getDescriptionAttribute(),
+            'title' => $this->meeting->title,
+            'body'  => $this->meeting->description,
         ];
+    }
+
+    private function setTokens()
+    {
+        $users = $this->meeting->users()->get();
+        foreach ($users as $user) {
+            $this->devicesTokens[] = $user->devices()->get()->pluck('token');
+        }
     }
 
 }

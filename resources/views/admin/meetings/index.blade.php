@@ -6,11 +6,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
-                <div class="card-header row">
-                    <h4 class="card-title col-10">Meetings</h4>
-                    <a class="col-2" href="{{route('admin.meetings.create')}}">
-                        <button class="btn btn-primary">Add</button>
-                    </a>
+                <div class="card-header">
+                    <div class="row">
+                        <h4 class="card-title col-10">Meetings</h4>
+                        <a class="col-2" href="{{route('admin.meetings.create')}}">
+                            <button class="btn btn-primary">Add</button>
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -23,16 +25,13 @@
                                 <th>
                                     Title
                                 </th>
-                                <th class="text-center">
+                                <th>
                                     Image
                                 </th>
-                                <th class="text-center">
-                                    Attendances Count
-                                </th>
-                                <th class="text-center">
+                                <th>
                                     Date
                                 </th>
-                                <th class="text-center">
+                                <th >
                                     Time
                                 </th>
                                 <th>
@@ -49,16 +48,13 @@
                                 <td>
                                     {{$meeting->title}}
                                 </td>
-                                <td class="text-center">
+                                <td>
                                     <img class="table-img" src="{{$meeting->image}}" alt="meeting_img">
                                 </td>
-                                <td class="text-center">
-                                    {{$meeting->attendance_count}}
-                                </td>
-                                <td class="text-center">
+                                <td>
                                     {{$meeting->date}}
                                 </td>
-                                <td class="text-center">
+                                <td>
                                     {{$meeting->time}}
                                 </td>
                                 <td class="row">

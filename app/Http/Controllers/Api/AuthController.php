@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Device;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
@@ -14,11 +16,11 @@ class AuthController extends Controller
 
     public function register(UserRequest $request)
     {
-        $user = new User;
-
-        User::create($user, $request);
+        $user = User::create($request->except('device_token'));
 
         auth()->login($user);
+
+        $this->storeUserDevice($request);
 
         $token = $this->createToken();
 
@@ -33,6 +35,8 @@ class AuthController extends Controller
 
         $token = $this->createToken();
 
+        $this->storeUserDevice($request);
+
         $user = new UserResource(auth()->user());
 
         return response()->json(['user' => $user, 'token' => $token], 200);
@@ -42,14 +46,25 @@ class AuthController extends Controller
     {
         auth()->user()->tokens()->delete();
 
-        auth()->logout();
+        Auth::guard('web')->logout();
 
-        return response(['message' => 'Thanks for visit our app'], 204);
+        return response()->json(null, 204);
     }
 
     private function createToken()
     {
         return auth()->user()->createToken('token')->plainTextToken;
+    }
+
+    private function storeUserDevice($request)
+    {
+        if ($request->device_token) {
+            $device = new Device;
+            $device->token = $request->device_token;
+            $device->user_id = auth()->id();
+            $device->save();
+
+        }
     }
 
 }

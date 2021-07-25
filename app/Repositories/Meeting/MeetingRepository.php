@@ -24,27 +24,6 @@ class MeetingRepository extends Repository implements MeetingRepositoryInterface
         parent::__construct($meeting);
     }
 
-    public function getData()
-    {
-        $categories = Category::select('id', 'name_ar', 'name_en')->get();
-
-        $users = User::select('id', 'name')->get();
-
-        $governorates = Governorate::select('id', 'name_ar', 'name_en')->get();
-
-        $cities = City::select('id', 'name_ar', 'name_en')->get();
-
-        $attendancesCountArray = Meeting::getAttendancesCountArray();
-
-        return [
-            'categories' => $categories,
-            'users' => $users,
-            'governorates' => $governorates,
-            'cities' => $cities,
-            'attendancesCountArray' => $attendancesCountArray
-        ];
-    }
-
     public function create($request)
     {
         $meeting = parent::create($request->merge(['created_by' => auth()->id()])->except('users'));
@@ -73,6 +52,29 @@ class MeetingRepository extends Repository implements MeetingRepositoryInterface
     public function joinUser(Model $meeting, $userId)
     {
         $meeting->users()->attach($userId);
+    }
+    /*
+     * helper method to get Data
+     * */
+    public function getData()
+    {
+        $categories = Category::select('id', 'name_ar', 'name_en')->get();
+
+        $users = User::select('id', 'name')->get();
+
+        $governorates = Governorate::select('id', 'governorate_name_ar', 'governorate_name_en')->get();
+
+        $cities = City::select('id', 'city_name_ar', 'city_name_en')->get();
+
+        $attendancesCountArray = Meeting::getAttendancesCountArray();
+
+        return [
+            'categories' => $categories,
+            'users' => $users,
+            'governorates' => $governorates,
+            'cities' => $cities,
+            'attendancesCountArray' => $attendancesCountArray
+        ];
     }
 
 }

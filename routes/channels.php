@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AdminChat;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -19,4 +20,11 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 
 Broadcast::channel('chats.{chatId}', function () {
     return true;
+});
+
+Broadcast::channel('admin.chats.{chatId}', function ($chatId) {
+    $chat = AdminChat::find($chatId);
+    if ($chat->from_admin_id == auth()->id() || $chat->to_admin_id == auth()->id())
+        return true;
+    return false;
 });

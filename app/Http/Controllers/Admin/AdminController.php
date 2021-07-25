@@ -47,7 +47,7 @@ class AdminController extends Controller
 
         $admin->syncRoles($request->roles);
 
-        return redirect()->route('admin.admins.index');
+        return redirect()->route('admin.admins.index')->withToastSuccess('Added successfully');
     }
 
     public function update(Admin $admin, AdminRequest $request)
@@ -56,14 +56,14 @@ class AdminController extends Controller
 
         $admin->syncRoles($request->roles);
 
-        return back();
+        return back()->withToastSuccess('Updated successfully');
     }
 
     public function destroy(Admin $admin)
     {
         $admin->delete();
 
-        return back();
+        return back()->withToastSuccess('Updated successfully');
     }
 
 }

@@ -14,7 +14,7 @@ class ChatController extends Controller
 
     public function index()
     {
-        return ChatResource::collection(Chat::whereUserId(auth()->id())->get());
+        return ChatResource::collection(Chat::myChats()->get());
     }
 
     public function show(Chat $chat)

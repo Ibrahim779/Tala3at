@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\User\UserRepository;
@@ -28,7 +29,7 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function update(User $user, UserRequest $request)
+    public function update(User $user, UserUpdateRequest $request)
     {
         $this->userRepository->update($user, $request->all());
 

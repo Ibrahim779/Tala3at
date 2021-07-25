@@ -22,7 +22,10 @@ class SlideFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title_ar' => $this->faker->sentence,
+            'title_en' => $this->faker->sentence,
+            'text_ar' => $this->faker->text,
+            'text_en' => $this->faker->text,
         ];
     }
 }

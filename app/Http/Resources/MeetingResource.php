@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Governorate;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MeetingResource extends JsonResource
@@ -28,7 +29,7 @@ class MeetingResource extends JsonResource
             'category'          => new CategoryResource(Category::find($this->category_id)),
             'governorate'       => new GovernorateResource(Governorate::find($this->governorate_id)),
             'city'              => new CityResource(City::find($this->city_id)),
-            'users'             => UserResource::collection($this->whenLoaded('users')),
+            'users'             => UserResource::collection(User::whereUserInMeeting($this->id)->get()),
         ];
     }
 

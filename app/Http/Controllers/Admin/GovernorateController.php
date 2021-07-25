@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GovernorateRequest;
 use App\Models\Governorate;
 use App\Repositories\Governorate\GovernorateRepository;
+use Illuminate\Support\Facades\File;
 
 class GovernorateController extends Controller
 {
@@ -20,7 +21,13 @@ class GovernorateController extends Controller
     public function index()
     {
         $governorates = $this->governorateRepository->paginate(self::PAGINATION);
+        $json = File::get(app_path('Services/JsonFiles/governorates.json'));
+        $governorates = json_decode($json);
 
+        foreach ($governorates as $governorate) {
+           print_r((array) $governorate);
+        }
+        dd();
         return view('admin.governorates.index', compact('governorates'));
     }
 

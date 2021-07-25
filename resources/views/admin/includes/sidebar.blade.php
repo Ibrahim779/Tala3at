@@ -34,18 +34,6 @@
                     <p>{{__('admin.meetings')}}</p>
                 </a>
             </li>
-            <li class="{{request()->routeIs('admin.governorates.*') ? 'active' : ''}}">
-                <a href="{{route('admin.governorates.index')}}">
-                    <i class="fas fa-map-marker"></i>
-                    <p>{{__('admin.governorates')}}</p>
-                </a>
-            </li>
-            <li class="{{request()->routeIs('admin.cities.*') ? 'active' : ''}}">
-                <a href="{{route('admin.cities.index')}}">
-                    <i class="fas fa-building"></i>
-                    <p>{{__('admin.cities')}}</p>
-                </a>
-            </li>
             <li class="{{request()->routeIs('admin.users.*') ? 'active' : ''}}">
                 <a href="{{route('admin.users.index')}}">
                     <i class="fas fa-user"></i>
@@ -61,7 +49,13 @@
             <li class="{{request()->routeIs('admin.chats.*') ? 'active' : ''}}">
                 <a href="{{route('admin.chats.index')}}">
                     <i class="fas fa-comments"></i>
-                    <p>{{__('admin.chats')}}</p>
+                    <p>{{__('admin.chatsLivewire')}}</p>
+                </a>
+            </li>
+            <li class="{{request()->routeIs('admin.chatsVue.*') ? 'active' : ''}}">
+                <a href="{{route('admin.chatsVue.index')}}">
+                    <i class="fas fa-comments"></i>
+                    <p>{{__('admin.chatsVue')}}</p>
                 </a>
             </li>
         </ul>

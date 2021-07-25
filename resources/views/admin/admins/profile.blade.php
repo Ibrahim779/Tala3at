@@ -113,7 +113,7 @@
                                 <h5 class="title">{{$admin->name}}</h5>
                             </a>
                             <div class="description">
-                                {{$admin->roles[0]->name}}
+                                {{@$admin->roles()->first()->name}}
                             </div>
                             <div class="description">
                                 {{$admin->email}}
