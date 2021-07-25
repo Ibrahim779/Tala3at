@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MeetingRequest;
+use App\Http\Requests\StoreMeetingRequest;
 use App\Models\Meeting;
 use App\Repositories\Meeting\MeetingRepository;
 
@@ -44,7 +44,7 @@ class MeetingController extends Controller
             compact('categories','users', 'governorates', 'cities', 'attendancesCountArray'));
     }
 
-    public function store(MeetingRequest $request)
+    public function store(StoreMeetingRequest $request)
     {
         $this->meetingRepository->create($request);
 
@@ -69,7 +69,7 @@ class MeetingController extends Controller
             compact('meeting', 'categories','users', 'governorates', 'cities', 'attendancesCountArray'));
     }
 
-    public function update(Meeting $meeting, MeetingRequest $request)
+    public function update(Meeting $meeting, StoreMeetingRequest $request)
     {
         $this->meetingRepository->update($meeting, $request);
 

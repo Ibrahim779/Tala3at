@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Meeting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MeetingRequest extends FormRequest
+class StoreMeetingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

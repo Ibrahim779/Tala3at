@@ -3,8 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\App;
 
-class ChatResource extends JsonResource
+class NotificationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,11 +15,14 @@ class ChatResource extends JsonResource
      */
     public function toArray($request)
     {
+        $title = 'title_' . App::getLocale();
+        $body = 'body_' . App::getLocale();
+
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'image' => $this->image,
-            'lastMessage' => MessageResource::collection($this->messages()->latest()->get()),
+            'title' => $this->data[$title],
+            'body' => $this->data[$body],
+            'url'  => $this->data['url']
         ];
     }
 }

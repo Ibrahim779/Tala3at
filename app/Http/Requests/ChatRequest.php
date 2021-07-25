@@ -26,7 +26,7 @@ class ChatRequest extends FormRequest
         return $this->isMethod('post') ?  $this->onCreate() :  $this->onUpdate();
     }
 
-    protected function onUpdate()
+    protected function onCreate()
     {
         return [
             'title_ar' => 'required|max:255',
@@ -35,7 +35,7 @@ class ChatRequest extends FormRequest
         ];
     }
 
-    protected function onCreate()
+    protected function onUpdate()
     {
         return [
             //

@@ -17,11 +17,11 @@ class FavoriteController extends Controller
 
     public function store(Request $request)
     {
-        if (!Favorite::exist($request->meeting_id)){
+        if (!Favorite::exist($request->meeting_id)) {
 
             Favorite::create($request->merge(['user_id' => auth()->id()])->all());
 
-            return response()->json(['message' => 'added successfully']);
+            return FavoriteResource::collection(Favorite::whereUserId(auth()->id())->get());
         }
 
         return response()->json(['message' => 'is exist']);

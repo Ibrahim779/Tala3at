@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MeetingRequest;
+use App\Http\Requests\Meeting\StoreMeetingRequest;
+use App\Http\Requests\Meeting\UpdateMeetingRequest;
 use App\Http\Resources\MeetingResource;
 use App\Models\Meeting;
 use App\Repositories\Meeting\MeetingRepository;
-use Illuminate\Http\Request;
 
 class MeetingController extends Controller
 {
@@ -29,7 +29,7 @@ class MeetingController extends Controller
         return MeetingResource::collection($this->meetingRepository->get());
     }
 
-    public function store(MeetingRequest $request)
+    public function store(StoreMeetingRequest $request)
     {
         $meeting = $this->meetingRepository->create($request);
 
@@ -43,7 +43,7 @@ class MeetingController extends Controller
         return new MeetingResource($meeting);
     }
 
-    public function update(MeetingRequest $request, Meeting $meeting)
+    public function update(UpdateMeetingRequest $request, Meeting $meeting)
     {
         $meeting = $this->meetingRepository->update($meeting, $request);
 

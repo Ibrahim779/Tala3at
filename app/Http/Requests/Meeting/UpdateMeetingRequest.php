@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Meeting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MessageRequest extends FormRequest
+class UpdateMeetingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,11 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'message' => 'required'
+            'title_ar' => 'min:5|max:255|string',
+            'title_en' => 'min:5|max:255|string',
+            'description_ar' => 'min:5|max:1000',
+            'description_en' => 'min:5|max:1000',
+            'img' => 'image|mimes:jpeg,jpg,png,gif,svg|max:10000',
         ];
     }
 }

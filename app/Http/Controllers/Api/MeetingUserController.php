@@ -23,18 +23,16 @@ class MeetingUserController extends Controller
     }
 
 
-    public function index()
+    public function index($user)
     {
-        //todo
-        $meetings = $this->meetingRepository->userMeetings(auth()->id())->get();
+        $meetings = $this->meetingRepository->userMeetings($user)->get();
 
         return MeetingResource::collection($meetings);
     }
 
-    public function getMeetingsCreatedByUser()
+    public function getMeetingsCreatedByUser($user)
     {
-        //todo
-        $meetings = $this->meetingRepository->whereCreatedBy(auth()->id())->get();
+        $meetings = $this->meetingRepository->whereCreatedBy($user)->get();
 
         return MeetingResource::collection($meetings);
     }

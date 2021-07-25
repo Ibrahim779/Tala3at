@@ -22,11 +22,11 @@ class ChatController extends Controller
         return new ChatResource($chat);
     }
 
-    public function store(Meeting $meeting)
+    public function store(Request $request)
     {
-        $chat = $this->firstOrCreate($meeting);
+        $chat = $this->firstOrCreate($request);
 
-        return redirect()->route('api.chat.show', $chat->id);
+        return redirect()->route('api.chats.show', $chat->id);
     }
 
     public function update(Chat $chat, ChatRequest $request)
@@ -36,21 +36,23 @@ class ChatController extends Controller
         return new ChatResource($chat);
     }
 
-    public function delete(Chat $chat)
+    public function destroy(Chat $chat)
     {
         $chat->delete();
 
         return response()->json(null, 204);
     }
 
-    private function firstOrCreate($meeting)
+    private function firstOrCreate($request)
     {
+        $meeting = Meeting::find($request->meeting_id);
+
         $chat = Chat::firstOrCreate([
             'meeting_id' => $meeting->id,
         ],[
             'title_ar'   => $meeting->title_ar,
             'title_en'   => $meeting->title_en,
-            'img'        => $meeting->img,
+            'img'        => $meeting->image,
         ]);
 
         $chat->users()->attach($meeting->users()->get()->pluck('id'));

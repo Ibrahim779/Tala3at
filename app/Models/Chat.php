@@ -19,6 +19,11 @@ class Chat extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function meeting()
     {
         return $this->belongsTo(Meeting::class);
@@ -31,8 +36,10 @@ class Chat extends Model
 
     public function setImgAttribute($img)
     {
-        return $this->attributes['img'] = (new FileStoreService)
-            ->handel($img, 'chats', $this->img)->getFileName();
+        if ($img && !is_string($img)) {
+            return $this->attributes['img'] = (new FileStoreService)
+                ->handel($img, 'chats', $this->img)->getFileName();
+        }
     }
 
     public function getImageAttribute()

@@ -18,9 +18,12 @@ class ChatMessageController extends Controller
         return MessageResource::collection(Message::whereChatId($chat->id)->get());
     }
 
-    public function store(MessageRequest $request)
+    public function store(Chat $chat, MessageRequest $request)
     {
-        $message = Message::create($request->merge(['user_id' => auth()->id()])->all());
+        $message = Message::create($request->merge([
+            'user_id' => auth()->id(),
+            'chat_id' => $chat->id
+        ])->all());
 
         broadcast(new MessageSent($message))->toOthers();
 

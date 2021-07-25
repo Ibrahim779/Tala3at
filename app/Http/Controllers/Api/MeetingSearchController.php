@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class MeetingSearchController extends Controller
 {
-    public function search(Request $request)
+    public function __invoke(Request $request)
     {
         $meetings = Meeting::whereCategoryId($request->category_id)
-            ->whereDate($request->date)
-            ->whereCityId($request->city_id)
-            ->whereAttendanceCount($request->attandance_count)
+            ->orWhere('date', $request->date)
+            ->orWhere('city_id', $request->city_id)
+            ->orWhere('attendance_count', $request->attendance_count)
             ->get();
 
         return MeetingResource::collection($meetings);

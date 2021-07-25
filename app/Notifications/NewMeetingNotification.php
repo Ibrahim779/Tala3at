@@ -49,8 +49,11 @@ class NewMeetingNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'title' => $this->meeting->title,
-            'body'  => $this->meeting->description,
+            'title_ar' => $this->meeting->title_ar,
+            'title_en' => $this->meeting->title_en,
+            'body_ar'  => $this->meeting->description_ar,
+            'body_en'  => $this->meeting->description_en,
+            'url'      => route('api.meetings.show', $this->meeting->id)
         ];
     }
 

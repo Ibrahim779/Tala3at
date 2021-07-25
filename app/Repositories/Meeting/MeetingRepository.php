@@ -28,7 +28,7 @@ class MeetingRepository extends Repository implements MeetingRepositoryInterface
     {
         $meeting = parent::create($request->merge(['created_by' => auth()->id()])->except('users'));
 
-        $meeting->users()->attach($request->users);
+        $meeting->users()->attach(array_merge($request->users, [auth()->id()]));
 
         return $meeting;
     }

@@ -17,10 +17,8 @@ class SetLocalFromApi
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->wantsJson()) {
-            if ($request->hasHeader('lang')) {
-                App::setLocale($request->header('lang'));
-            }
+        if ($request->wantsJson() && $request->hasHeader('lang')) {
+            App::setLocale($request->header('lang'));
         }
         return $next($request);
     }
