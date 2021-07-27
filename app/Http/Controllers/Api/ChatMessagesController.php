@@ -10,7 +10,7 @@ use App\Models\Chat;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
-class ChatMessageController extends Controller
+class ChatMessagesController extends Controller
 {
 
     public function index(Chat $chat)

@@ -8,7 +8,7 @@ use App\Models\City;
 use App\Models\Governorate;
 use Illuminate\Http\Request;
 
-class GovernorateCityController extends Controller
+class GovernorateCitiesController extends Controller
 {
 
     public function index(Governorate $governorate)

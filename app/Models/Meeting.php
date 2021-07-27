@@ -71,7 +71,7 @@ class Meeting extends Model
     public static function getAttendancesCountArray()
     {
         return [
-            __('admin.indeterminate') => self::ATTENDANCE_INDETERMINATE, //todo:: translate the key
+            __('admin.indeterminate') => self::ATTENDANCE_INDETERMINATE,
             '1-20'          => self::ATTENDAnCES_FROM_1_TO_20,
             '20-40'         => self::ATTENDAnCES_FROM_20_TO_40,
             '40-60'         => self::ATTENDAnCES_FROM_40_TO_60,

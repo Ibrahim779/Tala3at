@@ -39,7 +39,7 @@
     </div>
     @if(count($messages))
     <div class="mesgs">
-        <div class="msg_history" wire:poll="getMessages">
+        <div class="msg_history" wire:poll.500ms="getMessages">
             @foreach($messages as $message)
                 @if($message->admin_id != auth()->id())
                     <div class="incoming_msg">

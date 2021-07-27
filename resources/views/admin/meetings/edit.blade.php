@@ -89,7 +89,7 @@
                                     <label for="city-select">City</label>
                                     <select name="city_id" class="form-control myForm-select"
                                             id="city-select">
-                                        <option selected>Open this select menu</option>
+                                        <option selected>{{$meeting->city->name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -99,10 +99,9 @@
                                     <select name="attendance_count" class="form-control myForm-select"
                                             id="attendance-select">
                                         <option selected>select menu</option>
-{{--                                        Todo:: get Attendance count--}}
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @foreach($attendancesCountArray as $key => $value)
+                                            <option {{$meeting->attendances_count == $value ? 'selected' : ''}} value="{{$value}}">{{$key}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
 
-class CategoryMeetingController extends Controller
+class CategoryMeetingsController extends Controller
 {
 
     public function index(Category $category)

@@ -8,7 +8,7 @@ use App\Models\Meeting;
 use App\Repositories\Meeting\MeetingRepository;
 use Illuminate\Http\Request;
 
-class MeetingUserController extends Controller
+class UserMeetingsController extends Controller
 {
 
     private $meetingRepository;
@@ -28,19 +28,5 @@ class MeetingUserController extends Controller
         $meetings = $this->meetingRepository->userMeetings($user)->get();
 
         return MeetingResource::collection($meetings);
-    }
-
-    public function getMeetingsCreatedByUser($user)
-    {
-        $meetings = $this->meetingRepository->whereCreatedBy($user)->get();
-
-        return MeetingResource::collection($meetings);
-    }
-
-    public function joinUser(Meeting $meeting, $userId)
-    {
-        $this->meetingRepository->joinUser($meeting, $userId);
-
-        return response('you are joined successfully', 201);
     }
 }

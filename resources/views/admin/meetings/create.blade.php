@@ -100,7 +100,7 @@
                                     <select name="attendance_count" class="form-control myForm-select"
                                             id="attendance-select">
                                         <option selected>select menu</option>
-                                        @foreach(\App\Models\Meeting::getAttendancesCountArray() as $key => $value)
+                                        @foreach($attendancesCountArray as $key => $value)
                                             <option value="{{$value}}">{{$key}}</option>
                                         @endforeach
                                     </select>
