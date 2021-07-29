@@ -26,13 +26,13 @@
                     @endif
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Email is reauired">
                         <span class="label-input100">{{__('admin.email')}}</span>
-                        <input value="{{old('email')}}" class="input100" type="email" name="email" placeholder="{{__('site.email')}}">
+                        <input value="{{old('email')}}" class="input100" type="email" name="email" placeholder="{{__('admin.email')}}">
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
                         <span class="label-input100">{{__('admin.password')}}</span>
-                        <input class="input100" type="password" name="password" placeholder="{{__('site.password')}}">
+                        <input class="input100" type="password" name="password" placeholder="{{__('admin.password')}}">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
 
