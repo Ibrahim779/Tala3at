@@ -63,7 +63,7 @@ class AdminController extends Controller
     {
         $admin->delete();
 
-        return back()->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Deleted successfully');
     }
 
 }

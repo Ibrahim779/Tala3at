@@ -46,7 +46,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return back()->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Deleted successfully');
     }
 
     private function saveData(Role $role, RoleRequest $request)

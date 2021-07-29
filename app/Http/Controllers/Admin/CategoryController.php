@@ -52,7 +52,7 @@ class CategoryController extends Controller
     {
         $this->categoryRepository->delete($category);
 
-        return back()->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Deleted successfully');
     }
 
 

@@ -55,7 +55,7 @@ class SlideController extends Controller
     {
         $this->slideRepository->delete($slide);
 
-        return back()->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Deleted successfully');
     }
 
 

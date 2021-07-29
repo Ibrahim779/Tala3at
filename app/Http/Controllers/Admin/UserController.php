@@ -62,7 +62,7 @@ class UserController extends Controller
     {
         $this->userRepository->delete($user);
 
-        return back()->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Deleted successfully');
     }
 
 

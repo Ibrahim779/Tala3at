@@ -81,7 +81,7 @@ class MeetingController extends Controller
     {
         $this->meetingRepository->delete($meeting);
 
-        return back()->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Deleted successfully');
     }
 
     public function setData()
