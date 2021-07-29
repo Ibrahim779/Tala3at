@@ -9,7 +9,6 @@ use App\Http\Resources\UserResource;
 use App\Models\Device;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -24,7 +23,7 @@ class AuthController extends Controller
 
         $token = $this->createToken();
 
-        return response()->json(['token' => $token], 201);
+        return response()->json(['user' => new UserResource(auth()->user()), 'token' => $token], 201);
     }
 
     public function login(LoginRequest $request)

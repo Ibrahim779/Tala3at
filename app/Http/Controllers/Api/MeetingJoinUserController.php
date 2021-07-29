@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Meeting;
 use App\Repositories\Meeting\MeetingRepository;
-use Illuminate\Http\Request;
 
-class UserJoinableMeetingController extends Controller
+class MeetingJoinUserController extends Controller
 {
     private $meetingRepository;
 

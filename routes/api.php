@@ -9,13 +9,12 @@ use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\GovernorateCitiesController;
 use App\Http\Controllers\Api\GovernorateController;
 use App\Http\Controllers\Api\MeetingController;
+use App\Http\Controllers\Api\MeetingJoinUserController;
 use App\Http\Controllers\Api\MeetingSearchController;
 use App\Http\Controllers\Api\UserMeetingsController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\SlideController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\UserJoinableMeetingController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,7 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('categories/{category}/meetings', [CategoryMeetingsController::class, 'index']);
 
-    Route::post('meetings/{meeting}/join/users/{user}', UserJoinableMeetingController::class);
+    Route::post('meetings/{meeting}/join/users/{user}', MeetingJoinUserController::class);
 
     Route::apiResource('slides', SlideController::class)->only('index');
 
