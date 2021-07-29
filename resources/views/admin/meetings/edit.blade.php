@@ -89,7 +89,7 @@
                                     <label for="city-select">City</label>
                                     <select name="city_id" class="form-control myForm-select"
                                             id="city-select">
-                                        <option selected>{{$meeting->city->name}}</option>
+                                        <option selected value="{{$meeting->city->id}}">{{$meeting->city->name}}</option>
                                     </select>
                                 </div>
                             </div>
