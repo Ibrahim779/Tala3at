@@ -41,8 +41,8 @@ class NewMeetingNotification extends Notification
         $this->setTokens();
 
         return (new FirebaseMessage())
-            ->withTitle($this->meeting->getTitleAttribute())
-            ->withBody($this->meeting->getDescriptionAttribute())
+            ->withTitle($this->meeting->title)
+            ->withBody($this->meeting->description)
             ->asNotification($this->devicesTokens); // OR ->asMessage($deviceTokens);
     }
 

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\LogoutController;
+use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryMeetingsController;
 use App\Http\Controllers\Api\ChatController;
@@ -28,9 +31,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login');
 
-Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [RegisterController::class, 'register'])->name('register');
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -64,7 +67,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('governorates.cities', GovernorateCitiesController::class)->only('index');
 
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
 });
 

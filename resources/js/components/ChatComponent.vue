@@ -157,10 +157,7 @@
 
             Echo.private(`admin.chats.${this.chatId}`)
                 .listen('AdminSentMessage', (e) => {
-                    console.log(e);
-                    this.messages.push({
-                        message: e.message.message,
-                    });
+                    this.messages.push(e.message);
                 });
 
         },
