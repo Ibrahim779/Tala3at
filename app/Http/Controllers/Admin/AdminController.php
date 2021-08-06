@@ -25,15 +25,6 @@ class AdminController extends Controller
         return view('admin.admins.profile', compact('admin', 'roles'));
     }
 
-    public function profile()
-    {
-        $admin = auth()->user();
-
-        $roles = Role::select('id', 'name')->get();
-
-        return view('admin.admins.profile', compact('admin', 'roles'));
-    }
-
     public function create()
     {
         $roles = Role::select('id', 'name')->get();
