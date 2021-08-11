@@ -58,6 +58,12 @@
 {{--                    <p>{{__('admin.chatsVue')}}</p>--}}
 {{--                </a>--}}
 {{--            </li>--}}
+            <li>
+              <a href="{{url(config('chatify.routes.prefix'))}}">
+                    <i class="fas fa-comments"></i>
+                    <p>{{__('admin.chats')}}</p>
+               </a>
+            </li>
         </ul>
     </div>
 </div>
