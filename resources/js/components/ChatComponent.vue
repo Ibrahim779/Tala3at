@@ -159,7 +159,6 @@
                 .listen('AdminSentMessage', (e) => {
                     this.messages.push(e.message);
                 });
-
         },
     }
 

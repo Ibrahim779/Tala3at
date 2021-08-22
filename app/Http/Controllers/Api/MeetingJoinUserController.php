@@ -23,7 +23,7 @@ class MeetingJoinUserController extends Controller
     {
         $this->meetingRepository->joinUser($meeting, $userId);
 
-        return response('you are joined successfully', 201);
+        return response()->json('you are joined successfully', 201);
     }
 
 }

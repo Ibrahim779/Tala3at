@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RegisterController;
-use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryMeetingsController;
 use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\ChatMessagesController;

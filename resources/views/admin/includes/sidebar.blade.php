@@ -46,18 +46,18 @@
                     <p>{{__('admin.slides')}}</p>
                 </a>
             </li>
-{{--            <li class="{{request()->routeIs('admin.chats.*') ? 'active' : ''}}">--}}
-{{--                <a href="{{route('admin.chats.index')}}">--}}
-{{--                    <i class="fas fa-comments"></i>--}}
-{{--                    <p>{{__('admin.chatsLivewire')}}</p>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li class="{{request()->routeIs('admin.chatsVue.*') ? 'active' : ''}}">--}}
-{{--                <a href="{{route('admin.chatsVue.index')}}">--}}
-{{--                    <i class="fas fa-comments"></i>--}}
-{{--                    <p>{{__('admin.chatsVue')}}</p>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            <li class="{{request()->routeIs('admin.chats.*') ? 'active' : ''}}">
+                <a href="{{route('admin.chats.index')}}">
+                    <i class="fas fa-comments"></i>
+                    <p>{{__('admin.chatsLivewire')}}</p>
+                </a>
+            </li>
+            <li class="{{request()->routeIs('admin.chatsVue.*') ? 'active' : ''}}">
+                <a href="{{route('admin.chatsVue.index')}}">
+                    <i class="fas fa-comments"></i>
+                    <p>{{__('admin.chatsVue')}}</p>
+                </a>
+            </li>
             <li>
               <a href="{{url(config('chatify.routes.prefix'))}}">
                     <i class="fas fa-comments"></i>
